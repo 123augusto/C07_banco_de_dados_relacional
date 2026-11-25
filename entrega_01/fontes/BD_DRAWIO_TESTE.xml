@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Modelo_Logico_Festival" id="DB_Festival_02">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== ENTIDADES (TABELAS ER) ==================== -->
+        
+        <!-- Tabela: Pessoa (Superclasse) -->
+        <mxCell id="tbl_pessoa" value="pessoa" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="350" y="50" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_pessoa" value="PK | id_pessoa&#xa;       nome&#xa;       email&#xa;       telefone" style="text;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;whiteSpace=wrap;overflow=hidden;fontSize=12;" vertex="1" parent="tbl_pessoa">
+          <mxGeometry y="30" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Tabela: Palestrante (Subclasse) -->
+        <mxCell id="tbl_palestrante" value="palestrante" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="250" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_palestrante" value="PK, FK | id_pessoa&#xa;              minicurriculo&#xa;              area_especialidade" style="text;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;whiteSpace=wrap;overflow=hidden;fontSize=12;" vertex="1" parent="tbl_palestrante">
+          <mxGeometry y="30" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Tabela: Participante (Subclasse) -->
+        <mxCell id="tbl_participante" value="participante" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="600" y="250" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_participante" value="PK, FK | id_pessoa&#xa;              tipo_ingresso" style="text;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;whiteSpace=wrap;overflow=hidden;fontSize=12;" vertex="1" parent="tbl_participante">
+          <mxGeometry y="30" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Tabela: Atividade -->
+        <mxCell id="tbl_atividade" value="atividade" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="450" width="260" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_atividade" value="PK | id_atividade&#xa;FK | id_espaco&#xa;FK | id_palestrante&#xa;FK | id_atividade_prerequisito&#xa;       titulo&#xa;       descricao&#xa;       duracao_minutos&#xa;       data_hora_inicio" style="text;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;whiteSpace=wrap;overflow=hidden;fontSize=12;" vertex="1" parent="tbl_atividade">
+          <mxGeometry y="30" width="260" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Tabela: Espaco -->
+        <mxCell id="tbl_espaco" value="espaco" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="700" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_espaco" value="PK | id_espaco&#xa;       nome_local&#xa;       capacidade_maxima" style="text;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;whiteSpace=wrap;overflow=hidden;fontSize=12;" vertex="1" parent="tbl_espaco">
+          <mxGeometry y="30" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Tabela Associativa N:M: inscricoes_atividade -->
+        <mxCell id="tbl_inscricao" value="inscricoes_atividade" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="480" width="240" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_inscricao" value="PK, FK | id_participante&#xa;PK, FK | id_atividade&#xa;              data_inscricao&#xa;              status_checkin" style="text;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;whiteSpace=wrap;overflow=hidden;fontSize=12;" vertex="1" parent="tbl_inscricao">
+          <mxGeometry y="30" width="240" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== RELACIONAMENTOS (LINHAS) ==================== -->
+        
+        <!-- Herança: Pessoa -> Palestrante (1:1) -->
+        <mxCell id="rel_pes_pal" edge="1" parent="1" source="tbl_pessoa" target="tbl_palestrante" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_pes_pal" value="1:1" vertex="1" connectable="0" parent="rel_pes_pal" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="-0.2" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Herança: Pessoa -> Participante (1:1) -->
+        <mxCell id="rel_pes_par" edge="1" parent="1" source="tbl_pessoa" target="tbl_participante" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_pes_par" value="1:1" vertex="1" connectable="0" parent="rel_pes_par" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="-0.2" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Relacionamento: Palestrante -> Atividade (1:N) -->
+        <mxCell id="rel_pal_atv" edge="1" parent="1" source="tbl_palestrante" target="tbl_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_pal_atv" value="1:N" vertex="1" connectable="0" parent="rel_pal_atv" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="0.2" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Relacionamento: Espaço -> Atividade (1:N) -->
+        <mxCell id="rel_esp_atv" edge="1" parent="1" source="tbl_espaco" target="tbl_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_esp_atv" value="1:N" vertex="1" connectable="0" parent="rel_esp_atv" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="-0.2" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Relacionamento N:M (Atividade -> Inscricoes) -->
+        <mxCell id="rel_atv_ins" edge="1" parent="1" source="tbl_atividade" target="tbl_inscricao" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_atv_ins" value="1:N" vertex="1" connectable="0" parent="rel_atv_ins" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="0.2" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Relacionamento N:M (Participante -> Inscricoes) -->
+        <mxCell id="rel_par_ins" edge="1" parent="1" source="tbl_participante" target="tbl_inscricao" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_par_ins" value="1:N" vertex="1" connectable="0" parent="rel_par_ins" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="0.2" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Relacionamento Recursivo: Atividade -> Atividade (1:N) -->
+        <mxCell id="rel_atv_rec" edge="1" parent="1" source="tbl_atividade" target="tbl_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;exitX=0;exitY=0.25;entryX=0;entryY=0.75;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="498" />
+              <mxPoint x="40" y="593" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_atv_rec" value="Pré-requisito (1:N)" vertex="1" connectable="0" parent="rel_atv_rec" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];">
+          <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="-45" y="0" as="offset" /></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

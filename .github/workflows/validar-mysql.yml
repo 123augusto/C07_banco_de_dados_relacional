@@ -1,0 +1,60 @@
+name: Validar integração com MySQL
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  integracao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Obter a entrega
+        run: |
+          git init c07
+          git -C c07 fetch --depth 1 "https://github.com/$GITHUB_REPOSITORY.git" "$GITHUB_SHA"
+          git -C c07 checkout --detach FETCH_HEAD
+
+      - name: Validar as operações do menu
+        working-directory: c07
+        run: python3 entrega_03/validacao/validar_menu.py
+
+      - name: Iniciar servidor isolado
+        run: |
+          docker run -d --name c07-mysql --network host -e MYSQL_ROOT_PASSWORD=teste-isolado mysql:8.0 --bind-address=127.0.0.1 --mysqlx=0
+          for tentativa in {1..40}; do
+            if docker exec c07-mysql mysql -uroot -pteste-isolado -h127.0.0.1 -N -e "SELECT 1"; then
+              exit 0
+            fi
+            sleep 3
+          done
+          docker logs c07-mysql
+          exit 1
+
+      - name: Validar o SQL da primeira entrega
+        working-directory: c07
+        run: |
+          cliente="$RUNNER_TEMP/c07-mysql-client"
+          cat > "$cliente" <<'SH'
+          #!/bin/sh
+          exec docker exec -i -e MYSQL_PWD=teste-isolado c07-mysql mysql "$@"
+          SH
+          chmod +x "$cliente"
+          C07_MYSQL_CLIENT="$cliente" C07_MYSQL_TEST_PORT=3306 C07_MYSQL_TEST_DATADIR=/var/lib/mysql \
+            python3 entrega_01/validacao/validar_projeto_mysql.py
+
+      - name: Instalar o cliente e validar a aplicação
+        working-directory: c07
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install -r entrega_03/requirements.txt
+          .venv/bin/python entrega_03/validacao/validar_mysql.py
+
+      - name: Regerar os diagramas da primeira entrega
+        working-directory: c07
+        run: |
+          .venv/bin/python -m pip install Pillow
+          .venv/bin/python entrega_01/validacao/gerar_revisao_projeto.py

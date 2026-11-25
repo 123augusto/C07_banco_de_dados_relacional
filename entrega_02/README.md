@@ -1,6 +1,6 @@
 **Banco de Dados: Festival de Inovação do Inatel**
 
-**Integrantes do Grupo:** Augusto Leite e Vitor Augusto.
+**Integrantes do Grupo:** Augusto Leite Del' Carlo Carneiro, 866, turma L1; Vitor Augusto do Couto, 536, turma L2.
 
 **Sobre o Projeto:** Neste projeto, criamos um banco de dados para organizar o Festival de Inovação do Inatel, um evento de dois dias com palestras, oficinas e mesas-redondas para alunos e a comunidade externa.
 

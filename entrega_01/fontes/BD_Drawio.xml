@@ -1,0 +1,134 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Modelo_Festival" id="DB_Festival_01">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== ENTIDADES (RETÂNGULOS) ==================== -->
+        <!-- Layer: Gestão de Pessoas (Azul) -->
+        <mxCell id="e_pessoa" value="Pessoa" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="200" y="150" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e_palestrante" value="Palestrante" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e_participante" value="Participante" style="whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Layer: Gestão do Evento (Verde) -->
+        <mxCell id="e_atividade" value="Atividade" style="whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="650" y="300" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e_espaco" value="Espaço" style="whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="650" y="500" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== RELACIONAMENTOS (LOSANGOS) ==================== -->
+        <mxCell id="r_herda" value="É um(a)" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="200" y="210" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r_ministra" value="Ministra" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="375" y="220" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r_inscreve" value="inscricoes_atividade" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="475" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r_sedia" value="Sedia" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="650" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r_exige" value="Exige" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="830" y="290" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONEXÕES DE RELACIONAMENTO (COM CARDINALIDADE) ==================== -->
+        <!-- Herança -->
+        <mxCell id="l_p_h" edge="1" parent="1" source="e_pessoa" target="r_herda" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="l_h_pal" edge="1" parent="1" source="r_herda" target="e_palestrante" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="l_h_par" edge="1" parent="1" source="r_herda" target="e_participante" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Ministra (1:N) -->
+        <mxCell id="l_pal_m" edge="1" parent="1" source="e_palestrante" target="r_ministra" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_pal_m" value="1" vertex="1" connectable="0" parent="l_pal_m" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="0.1" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+        
+        <mxCell id="l_m_a" edge="1" parent="1" source="r_ministra" target="e_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_m_a" value="N" vertex="1" connectable="0" parent="l_m_a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="-0.1" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+
+        <!-- Inscreve (N:M) -->
+        <mxCell id="l_par_i" edge="1" parent="1" source="e_participante" target="r_inscreve" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_par_i" value="N" vertex="1" connectable="0" parent="l_par_i" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="0.1" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+        
+        <mxCell id="l_i_a" edge="1" parent="1" source="r_inscreve" target="e_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_i_a" value="M" vertex="1" connectable="0" parent="l_i_a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="-0.1" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+
+        <!-- Sedia (1:N) -->
+        <mxCell id="l_e_s" edge="1" parent="1" source="e_espaco" target="r_sedia" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_e_s" value="1" vertex="1" connectable="0" parent="l_e_s" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="0.1" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+        
+        <mxCell id="l_s_a" edge="1" parent="1" source="r_sedia" target="e_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_s_a" value="N" vertex="1" connectable="0" parent="l_s_a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="-0.1" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+
+        <!-- Exige (Recursivo 1:N) -->
+        <mxCell id="l_a_ex" edge="1" parent="1" source="e_atividade" target="r_exige" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1;exitY=0.25;entryX=0.5;entryY=0;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="880" y="310" /></Array></mxGeometry></mxCell>
+        <mxCell id="lbl_a_ex" value="1" vertex="1" connectable="0" parent="l_a_ex" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="-0.5" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+        
+        <mxCell id="l_ex_a" edge="1" parent="1" source="r_exige" target="e_atividade" style="shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=0.5;exitY=1;entryX=1;entryY=0.75;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="880" y="330" /></Array></mxGeometry></mxCell>
+        <mxCell id="lbl_ex_a" value="N" vertex="1" connectable="0" parent="l_ex_a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"><mxGeometry relative="1" x="-0.5" as="geometry"><mxPoint as="offset" /></mxGeometry></mxCell>
+
+        <!-- ==================== ATRIBUTOS (ELIPSES) ==================== -->
+        <!-- Atributos Pessoa -->
+        <mxCell id="a_p_id" value="id_pessoa" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="50" y="50" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_p_id" edge="1" parent="1" source="a_p_id" target="e_pessoa" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        
+        <mxCell id="a_p_nome" value="nome" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="150" y="20" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_p_nome" edge="1" parent="1" source="a_p_nome" target="e_pessoa" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_p_email" value="email" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="250" y="20" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_p_email" edge="1" parent="1" source="a_p_email" target="e_pessoa" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_p_tel" value="telefone" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="350" y="50" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_p_tel" edge="1" parent="1" source="a_p_tel" target="e_pessoa" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Atributos Palestrante -->
+        <mxCell id="a_pal_cv" value="minicurriculo" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="0" y="380" width="90" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_pal_cv" edge="1" parent="1" source="a_pal_cv" target="e_palestrante" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+        
+        <mxCell id="a_pal_area" value="area_esp." style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="110" y="380" width="90" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_pal_area" edge="1" parent="1" source="a_pal_area" target="e_palestrante" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Atributos Participante -->
+        <mxCell id="a_par_tipo" value="tipo_ingresso" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="300" y="380" width="100" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_par_tipo" edge="1" parent="1" source="a_par_tipo" target="e_participante" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Atributos Atividade -->
+        <mxCell id="a_atv_id" value="id_atividade" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="550" y="190" width="90" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_atv_id" edge="1" parent="1" source="a_atv_id" target="e_atividade" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_atv_titulo" value="titulo" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="660" y="170" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_atv_titulo" edge="1" parent="1" source="a_atv_titulo" target="e_atividade" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_atv_desc" value="descricao" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="760" y="190" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_atv_desc" edge="1" parent="1" source="a_atv_desc" target="e_atividade" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Atributos Espaço -->
+        <mxCell id="a_esp_id" value="id_espaco" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="550" y="580" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_esp_id" edge="1" parent="1" source="a_esp_id" target="e_espaco" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_esp_nome" value="nome_local" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="660" y="590" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_esp_nome" edge="1" parent="1" source="a_esp_nome" target="e_espaco" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_esp_cap" value="capacidade" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="760" y="570" width="80" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_esp_cap" edge="1" parent="1" source="a_esp_cap" target="e_espaco" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Atributos do Relacionamento N:M (Tabela Intermediária) -->
+        <mxCell id="a_ins_data" value="data_inscricao" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="400" y="420" width="100" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_ins_data" edge="1" parent="1" source="a_ins_data" target="r_inscreve" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="a_ins_status" value="status_checkin" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1"><mxGeometry x="520" y="440" width="100" height="40" as="geometry" /></mxCell>
+        <mxCell id="ea_ins_status" edge="1" parent="1" source="a_ins_status" target="r_inscreve" style="shape=connector;endArrow=none;html=1;"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

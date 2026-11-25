@@ -1,0 +1,103 @@
+{
+  "mysql": "8.0.46",
+  "ambiente": "Instancia temporaria isolada, TCP 127.0.0.1:33079",
+  "testes": [
+    {
+      "teste": "Criacao integral do SQL no MySQL 8.0.46",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Sete tabelas criadas",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Carga de pessoas e especializacoes",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Heranca impede subclasse sem Pessoa",
+      "resultado": "PASSOU",
+      "erro_esperado": 1452
+    },
+    {
+      "teste": "Email unico preservado",
+      "resultado": "PASSOU",
+      "erro_esperado": 1062
+    },
+    {
+      "teste": "1:N e recursividade aceitam varios dependentes",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Recursividade impede pre-requisito inexistente",
+      "resultado": "PASSOU",
+      "erro_esperado": 1452
+    },
+    {
+      "teste": "N:M aceita varios participantes e atividades",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "PK composta impede inscricao duplicada",
+      "resultado": "PASSOU",
+      "erro_esperado": 1062
+    },
+    {
+      "teste": "Inscricao exige participante existente",
+      "resultado": "PASSOU",
+      "erro_esperado": 1452
+    },
+    {
+      "teste": "Data opcional e checkin falso preservados",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Credenciais validas",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "1:1 impede segunda credencial do participante",
+      "resultado": "PASSOU",
+      "erro_esperado": 1062
+    },
+    {
+      "teste": "Credencial exige participante nao nulo",
+      "resultado": "PASSOU",
+      "erro_esperado": 1048
+    },
+    {
+      "teste": "Credencial exige participante existente",
+      "resultado": "PASSOU",
+      "erro_esperado": 1452
+    },
+    {
+      "teste": "Codigo de credencial unico",
+      "resultado": "PASSOU",
+      "erro_esperado": 1062
+    },
+    {
+      "teste": "ON UPDATE CASCADE em heranca, inscricao e credencial",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Excluir espaco aplica SET NULL",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Excluir palestrante aplica SET NULL",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Excluir pre-requisito aplica SET NULL e remove inscricoes vinculadas",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Excluir pessoa propaga para participante, credencial e inscricoes",
+      "resultado": "PASSOU"
+    },
+    {
+      "teste": "Colunas do modelo relacional correspondem as sete tabelas executadas",
+      "resultado": "PASSOU"
+    }
+  ]
+}

@@ -99,3 +99,7 @@ As consultas Q1 a Q6 são extraídas do próprio script entregue e seus resultad
 Isso comprova execução local dos scripts e dos casos listados. Não comprova execução na conexão habitual do estudante, configuração de outro servidor, testes de carga ou aceitação pelo professor.
 
 SHA-256 do Draw.io preservado: `3fd96d53d632a5064721597ae663a7ea9e51f224cd88343a1ac2e0908008c388`.
+
+## Reproduzir as verificações
+
+Com MySQL Server 8.0.18 ou superior instalado no Windows, rode `python entrega_02/validacao/validar_entrega.py` a partir da raiz do repositório. Se necessário, defina `C07_MYSQL_BIN` com o caminho da pasta `bin` do MySQL. O script inicia uma instância isolada e grava os resultados em `entrega_02/validacao/gerados`.

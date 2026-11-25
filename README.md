@@ -1,6 +1,13 @@
 # Festival de Inovação do Inatel — C07
 
-Projeto de Banco de Dados Relacional de Augusto Leite e Vitor Augusto. O sistema organiza pessoas, palestrantes, participantes, espaços, atividades, inscrições e credenciais de um festival com palestras, oficinas e mesas-redondas.
+O sistema organiza pessoas, palestrantes, participantes, espaços, atividades, inscrições e credenciais de um festival com palestras, oficinas e mesas-redondas.
+
+## Integrantes
+
+| Nome | Matrícula | Turma |
+| --- | --- | --- |
+| Augusto Leite Del' Carlo Carneiro | 866 | L1 |
+| Vitor Augusto do Couto | 536 | L2 |
 
 ## Entregas
 
@@ -41,3 +48,10 @@ Por padrão, a aplicação usa `festival_app` em `127.0.0.1:3306` com o banco `f
 - As chaves primárias identificam os registros e são usadas nos filtros. Os demais atributos podem ser editados. Para trocar o participante ou a atividade de uma inscrição, exclua a inscrição anterior pela chave composta e cadastre a nova.
 - Nas inscrições, pressione Enter no campo `data_inscricao` para que o trigger preencha a data. No campo `status_checkin`, `0` significa pendente e `1` significa confirmado.
 - As exclusões seguem as regras já definidas nas chaves estrangeiras. Por exemplo, excluir um participante também exclui suas inscrições e sua credencial. Excluir um espaço mantém suas atividades e remove o vínculo com o espaço.
+
+## Código de validação
+
+- [Validação da modelagem](entrega_01/validacao/README.md) para reproduzir a revisão dos diagramas e conferir o primeiro SQL.
+- [Validação da segunda entrega](entrega_02/VALIDACAO.md) com o relatório de referência e o script utilizado.
+- [Validação do menu](entrega_03/validacao/validar_menu.py) com SQLite em memória. Rode `python entrega_03/validacao/validar_menu.py` com Python 3.10 ou superior.
+- [Teste de integração](entrega_03/validacao/validar_mysql.py) executado pelo [GitHub Actions](.github/workflows/validar-mysql.yml) em uma instância temporária do MySQL 8.
