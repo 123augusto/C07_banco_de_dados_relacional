@@ -1,0 +1,54 @@
+INSERT: inscricao cadastrada	11	1	2026-10-26 14:00:00	0
+UPDATE: telefone corrigido	6	Felipe Costa	11900000006
+DELETE: deve retornar zero	0
+Check-in registrado.
+6	Felipe Costa	Estudante	FEST-2026-006
+7	Gabriela Dias	Profissional	FEST-2026-007
+8	Henrique Reis	Estudante	FEST-2026-008
+9	Isabela Nunes	Estudante	FEST-2026-009
+10	Joao Martins	Profissional	FEST-2026-010
+11	Luiza Freitas	Estudante	NULL
+1	Auditorio principal	120	2	120
+2	Laboratorio de robotica	40	1	90
+3	Sala de desenvolvimento	60	1	90
+4	Sala de empreendedorismo	80	1	60
+5	Sala de apoio	30	0	NULL
+10	Joao Martins	4	270	1
+6	Felipe Costa	3	240	1
+7	Gabriela Dias	3	210	2
+8	Henrique Reis	3	210	1
+9	Isabela Nunes	3	210	1
+Felipe Costa	FEST-2026-006	Introducao a sistemas inteligentes	Auditorio principal	Ana Melo	2026-10-20 08:00:00
+Gabriela Dias	FEST-2026-007	Introducao a sistemas inteligentes	Auditorio principal	Ana Melo	2026-10-21 09:00:00
+Henrique Reis	FEST-2026-008	Introducao a sistemas inteligentes	Auditorio principal	Ana Melo	2026-10-22 10:00:00
+Gabriela Dias	FEST-2026-007	Software acessivel	Sala de desenvolvimento	Carla Souza	2026-10-21 09:05:00
+Isabela Nunes	FEST-2026-009	Software acessivel	Sala de desenvolvimento	Carla Souza	2026-10-23 11:00:00
+Joao Martins	FEST-2026-010	Redes para projetos conectados	Auditorio principal	Elisa Rocha	2026-10-24 12:15:00
+Robotica na pratica	Introducao a sistemas inteligentes
+Redes para projetos conectados	Introducao a sistemas inteligentes
+11	Luiza Freitas
+1	Introducao a sistemas inteligentes	2026-11-20 09:00:00	Auditorio principal	Ana Melo	4	3
+2	Robotica na pratica	2026-11-20 14:30:00	Laboratorio de robotica	Bruno Lima	3	0
+3	Software acessivel	2026-11-20 10:30:00	Sala de desenvolvimento	Carla Souza	3	2
+4	Empreender com inovacao	2026-11-20 13:00:00	Sala de empreendedorismo	Diego Alves	3	0
+5	Redes para projetos conectados	2026-11-20 11:30:00	Auditorio principal	Elisa Rocha	3	1
+6	Mostra de projetos	2026-11-20 16:00:00	NULL	NULL	0	0
+1	Introducao a sistemas inteligentes	4	3	75.00
+2	Robotica na pratica	3	0	0.00
+3	Software acessivel	3	2	66.67
+4	Empreender com inovacao	3	0	0.00
+5	Redes para projetos conectados	3	1	33.33
+6	Mostra de projetos	0	0	0.00
+1	Ana Melo	ana.melo@example.com	Inteligencia artificial
+2	Bruno Lima	bruno.lima@example.com	Robotica
+3	Carla Souza	carla.souza@example.com	Engenharia de software
+4	Diego Alves	diego.alves@example.com	Empreendedorismo
+5	Elisa Rocha	elisa.rocha@example.com	Redes de computadores
+TRIGGER: data preenchida automaticamente	11	6	2026-10-28 15:35:11
+pessoa	11
+palestrante	5
+participante	6
+espaco	5
+atividade	6
+inscricoes_atividade	16
+credencial	5
