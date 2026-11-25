@@ -16,7 +16,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Iniciar servidor isolado
         run: |
-          docker run -d --name c07-mysql --network host -e MYSQL_ROOT_PASSWORD=teste-isolado mysql:8.0
+          docker run -d --name c07-mysql --network host -e MYSQL_ROOT_PASSWORD=teste-isolado mysql:8.0 --bind-address=127.0.0.1 --mysqlx=0
           for tentativa in {1..40}; do
             if docker exec c07-mysql mysql -uroot -pteste-isolado -h127.0.0.1 -N -e "SELECT 1"; then
               exit 0
@@ -41,7 +41,7 @@ jobs:
           def carregar(nome):
               return subprocess.run(
                   ["docker", "exec", "-i", "c07-mysql", "mysql", "-uroot",
-                   "-pteste-isolado", "--default-character-set=utf8mb4", "-BN"],
+                   "-pteste-isolado", "--default-character-set=utf8mb4", "-BNr"],
                   input=Path("entrega_03", nome).read_text(encoding="utf-8"),
                   text=True, capture_output=True, check=True,
               ).stdout
@@ -53,9 +53,10 @@ jobs:
           def menu(*entradas):
               resultado = subprocess.run(
                   [sys.executable, "entrega_03/main.py"],
-                  input="\n".join([*entradas, "0", ""]) , env=ambiente,
-                  text=True, capture_output=True, check=True, timeout=15,
+                  input="\n".join([*entradas, "0", ""]), env=ambiente,
+                  text=True, capture_output=True, timeout=15,
               )
+              assert resultado.returncode == 0, resultado.stdout + resultado.stderr
               assert "não concluíd" not in resultado.stdout, resultado.stdout
               return resultado.stdout
 
