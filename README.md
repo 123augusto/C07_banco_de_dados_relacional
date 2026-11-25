@@ -13,7 +13,7 @@ Projeto de Banco de Dados Relacional de Augusto Leite e Vitor Augusto. O sistema
 ## Executar a aplicação
 
 1. Com o **MySQL Server 8.0.18 ou superior** em execução, abra `entrega_03/festival_final.sql` no MySQL Workbench e execute o arquivo completo com uma conta administradora. Isso cria o banco `festival_inovacao_final`, carrega dados fictícios e instala o trigger, a procedure, a function e a view. Execute o script uma vez para inicializar o banco.
-2. Execute `entrega_03/usuario_aplicacao.sql` na mesma conexão. Guarde a senha gerada para a conta `festival_app`. Essa conta recebe as permissões de CRUD no banco do festival.
+2. Execute `entrega_03/usuario_aplicacao.sql` na mesma conexão. Guarde a senha gerada para a conta `festival_app@127.0.0.1`, que recebe as permissões de CRUD no banco do festival.
 3. Na pasta raiz do repositório, execute os comandos abaixo com **Python 3.10 ou superior**. Informe a senha gerada quando o programa pedir.
 
 ```bash
